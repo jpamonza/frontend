@@ -1,0 +1,17 @@
+<table *ngIf=" equipos.length > 0 ; else sinEquipos">
+  <th>
+    <tr>
+      <td>Name</td>
+      <td>Games</td>
+      <td>W</td>
+      <td>L</td>
+      <td>D</td>
+      <td>Goal Difference</td>
+      <td>Points</td>
+    </tr>
+  </th>
+</table>
+
+<ng-template #sinEquipos>
+  <h1>Lo sentimos, no hay equipos por ahora...</h1>
+</ng-template>
