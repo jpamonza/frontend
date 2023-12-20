@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular14';
+
+  test(): void {
+    return;
+  }
 }

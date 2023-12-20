@@ -5,14 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './menu-liga.component.html',
   styleUrls: ['./menu-liga.component.scss']
 })
-export class MenuLigaComponent implements OnInit {
+export class MenuLigaComponent {
   private titulo = "Titulo"
   public ligas: string[] = ["England", "Spain", "Germany", "France", "Italy"];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public getTitulo(): string {
     return this.titulo;
