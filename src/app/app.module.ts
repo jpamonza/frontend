@@ -3,22 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TituloComponent } from './modules/liga/components/titulo/titulo.component';
-import { MenuLigaComponent } from './modules/liga/components/menu-liga/menu-liga.component';
-import { TablaLigaComponent } from './modules/liga/components/tabla-liga/tabla-liga.component';
+import { LigaModule } from './modules/liga/liga.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TituloComponent,
-    MenuLigaComponent,
-    TablaLigaComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, LigaModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
