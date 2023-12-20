@@ -1,4 +1,4 @@
-<table *ngIf=" equipos.length > 0 ; else sinEquipos">
+<table *ngIf="equipos; else sinEquipos">
   <th>
     <tr>
       <td>Name</td>
@@ -10,6 +10,9 @@
       <td>Points</td>
     </tr>
   </th>
+
+  {{ equipos }}
+
 </table>
 
 <ng-template #sinEquipos>
