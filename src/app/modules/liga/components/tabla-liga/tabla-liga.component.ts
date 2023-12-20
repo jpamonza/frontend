@@ -5,13 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './tabla-liga.component.html',
   styleUrls: ['./tabla-liga.component.scss']
 })
-export class TablaLigaComponent implements OnInit {
+export class TablaLigaComponent {
 
   public equipos: string[] = ["Manchester City"];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
