@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TablaLigaComponent } from './components/tabla-liga/tabla-liga.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'ligas',
+    component: TablaLigaComponent,
     pathMatch: 'full',
-  },
-  {
-    path: 'ligas',
-    loadChildren: () =>
-      import('./modules/liga/liga.module').then((m) => m.LigaModule),
   },
   {
     path: '**',
@@ -19,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class LigaRoutingModule {}

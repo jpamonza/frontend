@@ -4,10 +4,11 @@ import { MenuLigaComponent } from './components/menu-liga/menu-liga.component';
 import { TablaLigaComponent } from './components/tabla-liga/tabla-liga.component';
 import { TituloComponent } from './components/titulo/titulo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LigaRoutingModule } from './liga-routing.module';
 
 @NgModule({
   declarations: [MenuLigaComponent, TablaLigaComponent, TituloComponent],
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, LigaRoutingModule],
   exports: [MenuLigaComponent, TablaLigaComponent, TituloComponent],
 })
 export class LigaModule {}

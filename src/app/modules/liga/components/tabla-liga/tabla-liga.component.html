@@ -11,7 +11,15 @@
     </tr>
   </th>
 
-  {{ equipos }}
+  <tr *ngFor="let equipo of (equipos | async)">
+    <td>{{ equipo.team.name }} </td>
+    <td>{{ equipo.all.played }}</td>
+    <td>{{ equipo.all.win }}</td>
+    <td>{{ equipo.all.lose }}</td>
+    <td>{{ equipo.all.draw }}</td>
+    <td>{{ equipo.goalsDiff }}</td>
+    <td>{{ equipo.points }}</td>
+  </tr>
 
 </table>
 
