@@ -1,18 +1,17 @@
+<h1>{{ pais }}</h1>
 <table *ngIf="equipos; else sinEquipos">
-  <th>
-    <tr>
-      <td>Name</td>
-      <td>Games</td>
-      <td>W</td>
-      <td>L</td>
-      <td>D</td>
-      <td>Goal Difference</td>
-      <td>Points</td>
-    </tr>
-  </th>
+  <tr>
+    <th>Name</th>
+    <th>Games</th>
+    <th>W</th>
+    <th>L</th>
+    <th>D</th>
+    <th>Goal Difference</th>
+    <th>Points</th>
+  </tr>
 
-  <tr *ngFor="let equipo of (equipos | async)">
-    <td>{{ equipo.team.name }} </td>
+  <tr *ngFor="let equipo of equipos | async">
+    <td>{{ equipo.team.name }}</td>
     <td>{{ equipo.all.played }}</td>
     <td>{{ equipo.all.win }}</td>
     <td>{{ equipo.all.lose }}</td>
@@ -20,7 +19,6 @@
     <td>{{ equipo.goalsDiff }}</td>
     <td>{{ equipo.points }}</td>
   </tr>
-
 </table>
 
 <ng-template #sinEquipos>

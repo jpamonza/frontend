@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TablaLigaService } from '../../services/tabla-liga.service';
 import { Observable, Subject, Subscription, map, of, takeUntil } from 'rxjs';
 import {
@@ -12,6 +12,10 @@ import {
   styleUrls: ['./tabla-liga.component.scss'],
 })
 export class TablaLigaComponent {
+  @Input() public set pais(nuevoPais: string) {
+    this.equipos = this.tablaService.getStandings(nuevoPais);
+  }
+
   // public equipos: Standing[] = null;
   // private destroy: Subject<void> = null;
   // private subscription: Subscription = null;
@@ -26,7 +30,6 @@ export class TablaLigaComponent {
     //   //   console.log(response);
     //   //   this.equipos = response;
     //   // });
-    this.equipos = this.tablaService.getStandings();
   }
 
   // public ngOnDestroy(): void {

@@ -4,4 +4,4 @@
 <span>Germany</span>
 <span>Italy</span> -->
 
-<span *ngFor="let liga of ligas"> {{ liga }} </span>
+<span *ngFor="let liga of ligas" (click)="seleccionarPais(liga)"> {{ liga }} </span>

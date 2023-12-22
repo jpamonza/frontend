@@ -1,0 +1,5 @@
+<app-titulo></app-titulo>
+
+<app-menu-liga (paisSeleccionado)="actualizarPaisSeleccionado($event)"></app-menu-liga>
+
+<app-tabla-liga [pais]="paisSeleccionado"></app-tabla-liga>

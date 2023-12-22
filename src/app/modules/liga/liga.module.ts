@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuLigaComponent } from './components/menu-liga/menu-liga.component';
-import { TablaLigaComponent } from './components/tabla-liga/tabla-liga.component';
-import { TituloComponent } from './components/titulo/titulo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LigaRoutingModule } from './liga-routing.module';
+import { components } from './components';
+import { pages } from './pages';
+import { TablaLigaService } from './services/tabla-liga.service';
 
 @NgModule({
-  declarations: [MenuLigaComponent, TablaLigaComponent, TituloComponent],
+  declarations: [components, pages],
   imports: [CommonModule, HttpClientModule, LigaRoutingModule],
-  exports: [MenuLigaComponent, TablaLigaComponent, TituloComponent],
+  exports: [components, pages],
+  providers: [TablaLigaService],
 })
 export class LigaModule {}
