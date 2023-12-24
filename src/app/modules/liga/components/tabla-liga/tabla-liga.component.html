@@ -1,4 +1,4 @@
-<h1>{{ pais }}</h1>
+<!-- <h1>{{ pais }}</h1>
 <table *ngIf="equipos; else sinEquipos">
   <tr>
     <th>Name</th>
@@ -27,4 +27,72 @@
 
 <ng-template #sinEquipos>
   <h1>Lo sentimos, no hay equipos por ahora...</h1>
+</ng-template> -->
+
+<table
+  mat-table
+  [dataSource]="equipos"
+  class="mat-elevation-z8"
+  *ngIf="equipos | async; else spinner"
+>
+  <ng-container matColumnDef="rank">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let item">{{ item.rank }}</td>
+  </ng-container>
+  <ng-container matColumnDef="logo">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let item">
+      <img
+        [src]="item.team.logo"
+        [alt]="item.team.name"
+        width="15"
+        height="15"
+      />
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let item">
+      <a [routerLink]="['/equipo/', item.team.id]">
+        {{ item.team.name }}
+      </a>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="games">
+    <th mat-header-cell *matHeaderCellDef>Games</th>
+    <td mat-cell *matCellDef="let item">{{ item.all.played }}</td>
+  </ng-container>
+  <ng-container matColumnDef="wins">
+    <th mat-header-cell *matHeaderCellDef>W</th>
+    <td mat-cell *matCellDef="let item" class="base-width">
+      {{ item.all.win }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="loses">
+    <th mat-header-cell *matHeaderCellDef>L</th>
+    <td mat-cell *matCellDef="let item" class="base-width">
+      {{ item.all.lose }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="draw">
+    <th mat-header-cell *matHeaderCellDef>D</th>
+    <td mat-cell *matCellDef="let item" class="base-width">
+      {{ item.all.draw }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="goalsDiff">
+    <th mat-header-cell *matHeaderCellDef>Goal Difference</th>
+    <td mat-cell *matCellDef="let item">{{ item.goalsDiff }}</td>
+  </ng-container>
+  <ng-container matColumnDef="points">
+    <th mat-header-cell *matHeaderCellDef>Points</th>
+    <td mat-cell *matCellDef="let item">{{ item.points }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnas"></tr>
+</table>
+
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
 </ng-template>

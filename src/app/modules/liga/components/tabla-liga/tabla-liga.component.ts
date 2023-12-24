@@ -20,6 +20,17 @@ export class TablaLigaComponent {
   // private destroy: Subject<void> = null;
   // private subscription: Subscription = null;
   public equipos: Observable<Standing[]> = null;
+  public columnas: string[] = [
+    'rank',
+    'logo',
+    'name',
+    'games',
+    'wins',
+    'loses',
+    "draw",
+    "goalsDiff",
+    "points"
+  ];
 
   constructor(private tablaService: TablaLigaService) {
     // this.destroy = new Subject<void>();

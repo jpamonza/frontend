@@ -8,10 +8,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class MenuLigaComponent {
   @Output() public paisSeleccionado = new EventEmitter<string>();
   public ligas: string[] = ['England', 'Spain', 'Germany', 'France', 'Italy'];
+  public ligaSeleccionada: string = this.ligas[0];
 
   constructor() {}
 
   public seleccionarPais(pais: string): void {
+    this.ligaSeleccionada = pais;
     this.paisSeleccionado.emit(pais);
   }
 }

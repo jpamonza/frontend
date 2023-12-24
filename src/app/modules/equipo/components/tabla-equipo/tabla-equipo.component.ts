@@ -16,6 +16,15 @@ export class TablaEquipoComponent {
   @Input() public last: number = 10;
 
   public fixtures: Observable<GameResult[]>
+  public columnas: string[] = [
+    'homeLogo',
+    'homeName',
+    'homeGoals',
+    '-',
+    'awayGoals',
+    'awayName',
+    'awayLogo',
+  ];
 
   constructor(private fixtureService: FixtureService, private router: Router) {}
 

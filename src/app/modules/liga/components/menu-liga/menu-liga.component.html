@@ -4,4 +4,19 @@
 <span>Germany</span>
 <span>Italy</span> -->
 
-<span *ngFor="let liga of ligas" (click)="seleccionarPais(liga)"> {{ liga }} </span>
+<!-- <span *ngFor="let liga of ligas" (click)="seleccionarPais(liga)"> {{ liga }} </span> -->
+
+
+<nav mat-tab-nav-bar [backgroundColor]="'primary'" [tabPanel]="tabPanel">
+  <span
+    mat-tab-link
+    id="{{ liga | lowercase }}Select"
+    *ngFor="let liga of ligas"
+    [active]="liga === ligaSeleccionada"
+    (click)="seleccionarPais(liga)"
+  >
+    {{ liga }}
+  </span>
+</nav>
+
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
