@@ -37,4 +37,8 @@ export class TablaLigaComponent {
   //   // this.destroy.next();
   //   // this.destroy.complete();
   // }
+
+  public verPartidos(equipo: string): void {
+    console.log('ver partidos de:', equipo);
+  }
 }

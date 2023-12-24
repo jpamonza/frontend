@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./modules/liga/liga.module').then((m) => m.LigaModule),
   },
   {
+    path: 'equipo',
+    loadChildren: () =>
+      import('./modules/equipo/equipo.module').then((m) => m.EquipoModule),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
