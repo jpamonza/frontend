@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 export class TablaEquipoComponent {
   @Input() public set team(teamId: number) {
     this.fixtures = this.fixtureService.getFixtures(teamId, this.last);
-  }
+      }
   @Input() public last: number = 10;
 
-  public fixtures: Observable<GameResult[]>
+  public fixtures: Observable<GameResult[]>;
   public columnas: string[] = [
     'homeLogo',
     'homeName',
@@ -29,6 +29,6 @@ export class TablaEquipoComponent {
   constructor(private fixtureService: FixtureService, private router: Router) {}
 
   public irPaginaAnterior(): void {
-    this.router.navigate([".."]);
+    this.router.navigate(['..']);
   }
 }

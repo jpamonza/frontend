@@ -34,14 +34,15 @@
   [dataSource]="equipos"
   class="mat-elevation-z8"
   *ngIf="equipos | async; else spinner"
+  class="w-100 table table-bordered h-100 overflow-auto d-flex flex-column"
 >
   <ng-container matColumnDef="rank">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let item">{{ item.rank }}</td>
+    <th mat-header-cell *matHeaderCellDef class="col"></th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">{{ item.rank }}</td>
   </ng-container>
   <ng-container matColumnDef="logo">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let item">
+    <th mat-header-cell *matHeaderCellDef class="col"></th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">
       <img
         [src]="item.team.logo"
         [alt]="item.team.name"
@@ -51,42 +52,42 @@
     </td>
   </ng-container>
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let item">
+    <th mat-header-cell *matHeaderCellDef class="col-4">Name</th>
+    <td mat-cell *matCellDef="let item" class="col-4">
       <a [routerLink]="['/equipo/', item.team.id]">
         {{ item.team.name }}
       </a>
     </td>
   </ng-container>
   <ng-container matColumnDef="games">
-    <th mat-header-cell *matHeaderCellDef>Games</th>
-    <td mat-cell *matCellDef="let item">{{ item.all.played }}</td>
+    <th mat-header-cell *matHeaderCellDef class="col">Games</th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">{{ item.all.played }}</td>
   </ng-container>
   <ng-container matColumnDef="wins">
-    <th mat-header-cell *matHeaderCellDef>W</th>
-    <td mat-cell *matCellDef="let item" class="base-width">
+    <th mat-header-cell *matHeaderCellDef class="col">W</th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">
       {{ item.all.win }}
     </td>
   </ng-container>
   <ng-container matColumnDef="loses">
-    <th mat-header-cell *matHeaderCellDef>L</th>
-    <td mat-cell *matCellDef="let item" class="base-width">
+    <th mat-header-cell *matHeaderCellDef class="col">L</th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">
       {{ item.all.lose }}
     </td>
   </ng-container>
   <ng-container matColumnDef="draw">
-    <th mat-header-cell *matHeaderCellDef>D</th>
-    <td mat-cell *matCellDef="let item" class="base-width">
+    <th mat-header-cell *matHeaderCellDef class="col">D</th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">
       {{ item.all.draw }}
     </td>
   </ng-container>
   <ng-container matColumnDef="goalsDiff">
-    <th mat-header-cell *matHeaderCellDef>Goal Difference</th>
-    <td mat-cell *matCellDef="let item">{{ item.goalsDiff }}</td>
+    <th mat-header-cell *matHeaderCellDef class="col">Goal Difference</th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">{{ item.goalsDiff }}</td>
   </ng-container>
   <ng-container matColumnDef="points">
-    <th mat-header-cell *matHeaderCellDef>Points</th>
-    <td mat-cell *matCellDef="let item">{{ item.points }}</td>
+    <th mat-header-cell *matHeaderCellDef class="col">Points</th>
+    <td mat-cell *matCellDef="let item" class="col justify-content-center">{{ item.points }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>

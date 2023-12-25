@@ -35,12 +35,12 @@
 <table
   mat-table
   [dataSource]="fixtures | async"
-  class="mat-elevation-z8"
+  class="mat-elevation-z8 w-100 table table-bordered d-flex flex-column"
   *ngIf="fixtures | async; else spinner"
 >
   <ng-container matColumnDef="homeLogo">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let game">
+    <th class="col" mat-header-cell *matHeaderCellDef></th>
+    <td class="col" mat-cell *matCellDef="let game">
       <img
         [src]="game.teams.home.logo"
         [alt]="game.teams.home.name"
@@ -50,34 +50,40 @@
     </td>
   </ng-container>
   <ng-container matColumnDef="homeName">
-    <th mat-header-cell *matHeaderCellDef>Local</th>
-    <td mat-cell *matCellDef="let game">
-      {{ game.teams.home.name }}
+    <th class="col-3" mat-header-cell *matHeaderCellDef>Local</th>
+    <td class="col-3" mat-cell *matCellDef="let game">
+      <span class="text-truncate">
+        {{ game.teams.home.name }}
+      </span>
     </td>
   </ng-container>
   <ng-container matColumnDef="homeGoals">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let game" class="base-width">
+    <th class="col" mat-header-cell *matHeaderCellDef></th>
+    <td class="col" mat-cell *matCellDef="let game">
       {{ game.goals.home }}
     </td>
   </ng-container>
   <ng-container matColumnDef="-">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let game" class="base-width">-</td>
+    <th class="col" mat-header-cell *matHeaderCellDef></th>
+    <td class="col" mat-cell *matCellDef="let game">-</td>
   </ng-container>
   <ng-container matColumnDef="awayGoals">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let game" class="base-width">
+    <th class="col" mat-header-cell *matHeaderCellDef></th>
+    <td class="col" mat-cell *matCellDef="let game">
       {{ game.goals.away }}
     </td>
   </ng-container>
   <ng-container matColumnDef="awayName">
-    <th mat-header-cell *matHeaderCellDef>Visitor</th>
-    <td mat-cell *matCellDef="let game">{{ game.teams.away.name }}</td>
+    <th class="col-3" mat-header-cell *matHeaderCellDef>Visitor</th>
+    <td class="col-3" mat-cell *matCellDef="let game">
+      <span class="text-truncate">
+        {{ game.teams.away.name }}
+      </span>
+    </td>
   </ng-container>
   <ng-container matColumnDef="awayLogo">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let game">
+    <th class="col" mat-header-cell *matHeaderCellDef></th>
+    <td class="col" mat-cell *matCellDef="let game">
       <img
         [src]="game.teams.away.logo"
         [alt]="game.teams.away.name"
@@ -87,8 +93,12 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
-  <tr mat-row *matRowDef="let myRowData; columns: columnas"></tr>
+  <tr
+    class="d-flex"
+    mat-header-row
+    *matHeaderRowDef="columnas; sticky: true"
+  ></tr>
+  <tr class="d-flex" mat-row *matRowDef="let myRowData; columns: columnas"></tr>
 </table>
 
 <button mat-raised-button color="primary" (click)="irPaginaAnterior()">
@@ -96,5 +106,7 @@
 </button>
 
 <ng-template #spinner>
-  <mat-spinner></mat-spinner>
+  <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <mat-spinner></mat-spinner>
+  </div>
 </ng-template>

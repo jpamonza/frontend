@@ -1,0 +1,37 @@
+.table>thead {
+  vertical-align: middle;
+}
+
+table {
+  tr, td, th {
+    display: flex;
+  }
+
+  td, th {
+    align-items: center;
+  }
+
+  th {
+    justify-content: center;
+  }
+  
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
