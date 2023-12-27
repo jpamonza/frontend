@@ -14,7 +14,7 @@ import {
 export class TablaLigaComponent {
   @Input() public set pais(nuevoPais: string) {
     this.equipos = this.tablaService.getStandings(nuevoPais);
-      }
+  }
 
   // public equipos: Standing[] = null;
   // private destroy: Subject<void> = null;

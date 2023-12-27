@@ -3,6 +3,7 @@ import { FixtureService } from '../../services/fixture.service';
 import { Observable } from 'rxjs';
 import { GameResult } from '../../models/get-fixtures.model';
 import { Router } from '@angular/router';
+import { EstadoService } from 'src/app/modules/shared/services/estado.service';
 
 @Component({
   selector: 'app-tabla-equipo',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class TablaEquipoComponent {
   @Input() public set team(teamId: number) {
     this.fixtures = this.fixtureService.getFixtures(teamId, this.last);
-      }
+  }
   @Input() public last: number = 10;
 
   public fixtures: Observable<GameResult[]>;
@@ -26,7 +27,13 @@ export class TablaEquipoComponent {
     'awayLogo',
   ];
 
-  constructor(private fixtureService: FixtureService, private router: Router) {}
+  constructor(
+    private fixtureService: FixtureService,
+    private router: Router,
+    private estadoService: EstadoService
+  ) {
+    console.log("Desde Tabla Equipo", this.estadoService.getPaisSeleccionado())
+  }
 
   public irPaginaAnterior(): void {
     this.router.navigate(['..']);

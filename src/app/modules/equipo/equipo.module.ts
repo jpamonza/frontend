@@ -8,6 +8,9 @@ import { FixtureService } from './services/fixture.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { EquipoGuard } from './guards/equipo.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FootballApiInterceptor } from '../shared/interceptors/football-api.interceptor';
 
 @NgModule({
   declarations: [EquipoPageComponent, TablaEquipoComponent],
@@ -18,6 +21,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatProgressSpinnerModule,
   ],
-  providers: [FixtureService],
+  providers: [
+    FixtureService,
+    EquipoGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: FootballApiInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class EquipoModule {}
