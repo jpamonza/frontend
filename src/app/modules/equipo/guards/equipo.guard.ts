@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { EstadoService } from '../../shared/services/estado.service';
 
 @Injectable()
-export class EquipoGuard implements CanActivate, CanLoad {
+export class EquipoGuard  {
   public constructor(
     private estadoService: EstadoService,
     private router: Router
