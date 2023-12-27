@@ -7,7 +7,7 @@ import { EstadoService } from 'src/app/modules/shared/services/estado.service';
   styleUrls: ['./liga-page.component.scss'],
 })
 export class LigaPageComponent {
-  public paisSeleccionado: string;
+  public paisSeleccionado: string = "England";
 
   constructor(private estadoService: EstadoService) {
     if (this.estadoService.getPaisSeleccionado()) {
