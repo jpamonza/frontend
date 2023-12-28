@@ -9,7 +9,6 @@ const routes: Routes = [
     component: EquipoPageComponent,
     pathMatch: 'full',
     canActivate: [EquipoGuard],
-    canLoad: [EquipoGuard],
   },
   {
     path: '**',

@@ -23,11 +23,6 @@ import { FootballApiInterceptor } from '../shared/interceptors/football-api.inte
   exports: [components, pages],
   providers: [
     TablaLigaService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: FootballApiInterceptor,
-      multi: true,
-    },
   ],
 })
 export class LigaModule {}

@@ -24,11 +24,6 @@ import { FootballApiInterceptor } from '../shared/interceptors/football-api.inte
   providers: [
     FixtureService,
     EquipoGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: FootballApiInterceptor,
-      multi: true,
-    },
   ],
 })
 export class EquipoModule {}

@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { EstadoService } from '../../shared/services/estado.service';
 
-@Injectable()
-export class EquipoGuard  {
+@Injectable({
+  providedIn: 'root',
+})
+export class EquipoGuard {
   public constructor(
     private estadoService: EstadoService,
     private router: Router
@@ -24,6 +26,14 @@ export class EquipoGuard  {
 
   public canLoad(): boolean {
     console.log('canLoad');
-    return true;
+    const existePaisSeleccionado = this.estadoService.getPaisSeleccionado()
+      ? true
+      : false;
+
+    if (!existePaisSeleccionado) {
+      this.router.navigate(['/ligas']);
+    }
+
+    return existePaisSeleccionado;
   }
 }
