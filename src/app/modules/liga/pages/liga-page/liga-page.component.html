@@ -1,9 +1,9 @@
+<span> {{ paisSeleccionado2 | async }} </span>
+
 <div class="container d-flex flex-column h-100 pt-4 pb-4">
   <app-titulo></app-titulo>
 
-  <app-menu-liga
-    (paisSeleccionado)="actualizarPaisSeleccionado($event)"
-  ></app-menu-liga>
+  <app-menu-liga></app-menu-liga>
 
-  <app-tabla-liga [pais]="paisSeleccionado" class="overflow-hidden"></app-tabla-liga>
+  <app-tabla-liga class="overflow-hidden"></app-tabla-liga>
 </div>

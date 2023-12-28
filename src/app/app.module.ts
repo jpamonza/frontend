@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,10 @@ import { LigaModule } from './modules/liga/liga.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FootballApiInterceptor } from './modules/shared/interceptors/football-api.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ligaReducer } from './modules/liga/state/reducers';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +19,18 @@ import { FootballApiInterceptor } from './modules/shared/interceptors/football-a
     AppRoutingModule,
     LigaModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot(
+      {
+        ligas: ligaReducer,
+      },
+      {}
+    ),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      name: 'Futbol App',
+    }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

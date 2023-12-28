@@ -5,6 +5,8 @@ import {
   GetStandingsResponse,
   Standing,
 } from '../../models/get-standings-response.model';
+import { Store } from '@ngrx/store';
+import { selectPaisSeleccionado } from '../../state/selectors/liga.selectors';
 
 @Component({
   selector: 'app-tabla-liga',
@@ -12,9 +14,9 @@ import {
   styleUrls: ['./tabla-liga.component.scss'],
 })
 export class TablaLigaComponent {
-  @Input() public set pais(nuevoPais: string) {
-    this.equipos = this.tablaService.getStandings(nuevoPais);
-  }
+  // @Input() public set pais(nuevoPais: string) {
+  //   this.equipos = this.tablaService.getStandings(nuevoPais);
+  // }
 
   // public equipos: Standing[] = null;
   // private destroy: Subject<void> = null;
@@ -32,7 +34,7 @@ export class TablaLigaComponent {
     'points',
   ];
 
-  constructor(private tablaService: TablaLigaService) {
+  constructor(private tablaService: TablaLigaService, private store: Store) {
     // this.destroy = new Subject<void>();
     // this.tablaService
     //   .getStandings()
@@ -41,6 +43,12 @@ export class TablaLigaComponent {
     //   //   console.log(response);
     //   //   this.equipos = response;
     //   // });
+
+    this.store
+      .select(selectPaisSeleccionado)
+      .subscribe(
+        (pais) => (this.equipos = this.tablaService.getStandings(pais))
+      );
   }
 
   // public ngOnDestroy(): void {

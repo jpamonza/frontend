@@ -12,7 +12,7 @@
     mat-tab-link
     id="{{ liga | lowercase }}Select"
     *ngFor="let liga of ligas"
-    [active]="liga === ligaSeleccionada"
+    [active]="liga === (ligaSeleccionada | async)"
     (click)="seleccionarPais(liga)"
     class="col"
   >
