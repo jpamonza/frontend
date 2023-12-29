@@ -1,39 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { EstadoService } from '../../shared/services/estado.service';
+import { Observable, map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectPaisSeleccionado } from '../../liga/state/selectors/liga.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EquipoGuard {
-  public constructor(
-    private estadoService: EstadoService,
-    private router: Router
-  ) {}
+  public constructor(private store: Store, private router: Router) {}
 
-  public canActivate(): boolean {
+  public canActivate(): Observable<boolean> {
     console.log('canActivate');
-    const existePaisSeleccionado = this.estadoService.getPaisSeleccionado()
-      ? true
-      : false;
+    return this.store.select(selectPaisSeleccionado).pipe(
+      map((paisSeleccionado) => {
+        const existePaisSeleccionado = paisSeleccionado ? true : false;
 
-    if (!existePaisSeleccionado) {
-      this.router.navigate(['/ligas']);
-    }
+        if (!existePaisSeleccionado) {
+          this.router.navigate(['/ligas']);
+        }
 
-    return existePaisSeleccionado;
-  }
-
-  public canLoad(): boolean {
-    console.log('canLoad');
-    const existePaisSeleccionado = this.estadoService.getPaisSeleccionado()
-      ? true
-      : false;
-
-    if (!existePaisSeleccionado) {
-      this.router.navigate(['/ligas']);
-    }
-
-    return existePaisSeleccionado;
+        return existePaisSeleccionado;
+      })
+    );
   }
 }

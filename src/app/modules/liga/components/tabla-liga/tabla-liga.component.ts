@@ -1,27 +1,22 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { TablaLigaService } from '../../services/tabla-liga.service';
-import { Observable, Subject, Subscription, map, of, takeUntil } from 'rxjs';
-import {
-  GetStandingsResponse,
-  Standing,
-} from '../../models/get-standings-response.model';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Standing } from '../../models/get-standings-response.model';
 import { Store } from '@ngrx/store';
-import { selectPaisSeleccionado } from '../../state/selectors/liga.selectors';
+import {
+  selectEquipos,
+  selectEstaCargando,
+} from '../../state/selectors/liga.selectors';
+import { tablaEquiposSolicitud } from '../../state/actions';
 
 @Component({
   selector: 'app-tabla-liga',
   templateUrl: './tabla-liga.component.html',
   styleUrls: ['./tabla-liga.component.scss'],
 })
-export class TablaLigaComponent {
-  // @Input() public set pais(nuevoPais: string) {
-  //   this.equipos = this.tablaService.getStandings(nuevoPais);
-  // }
-
-  // public equipos: Standing[] = null;
-  // private destroy: Subject<void> = null;
-  // private subscription: Subscription = null;
-  public equipos: Observable<Standing[]> = null;
+export class TablaLigaComponent implements OnInit {
+  public equipos: Observable<Standing[]> = this.store.select(selectEquipos);
+  public estaCargando: Observable<boolean> =
+    this.store.select(selectEstaCargando);
   public columnas: string[] = [
     'rank',
     'logo',
@@ -34,28 +29,11 @@ export class TablaLigaComponent {
     'points',
   ];
 
-  constructor(private tablaService: TablaLigaService, private store: Store) {
-    // this.destroy = new Subject<void>();
-    // this.tablaService
-    //   .getStandings()
-    //   // .pipe(takeUntil(this.destroy))
-    //   // .subscribe((response) => {
-    //   //   console.log(response);
-    //   //   this.equipos = response;
-    //   // });
+  constructor(private store: Store) {}
 
-    this.store
-      .select(selectPaisSeleccionado)
-      .subscribe(
-        (pais) => (this.equipos = this.tablaService.getStandings(pais))
-      );
+  public ngOnInit(): void {
+    this.store.dispatch(tablaEquiposSolicitud());
   }
-
-  // public ngOnDestroy(): void {
-  //   // this.subscription.unsubscribe();
-  //   // this.destroy.next();
-  //   // this.destroy.complete();
-  // }
 
   public verPartidos(equipo: string): void {
     console.log('ver partidos de:', equipo);

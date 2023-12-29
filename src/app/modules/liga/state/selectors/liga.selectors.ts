@@ -6,3 +6,13 @@ export const selectPaisSeleccionado = createSelector(
   selectLigaState,
   (state) => state.paisSeleccionado
 );
+
+export const selectEquipos = createSelector(
+  selectLigaState,
+  (state) => state.equipos
+);
+
+export const selectEstaCargando = createSelector(
+  selectLigaState,
+  (state) => state.estaCargando
+);

@@ -9,7 +9,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FootballApiInterceptor } from './modules/shared/interceptors/football-api.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ligaReducer } from './modules/liga/state/reducers';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
@@ -19,12 +18,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     LigaModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(
-      {
-        ligas: ligaReducer,
-      },
-      {}
-    ),
+    StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),

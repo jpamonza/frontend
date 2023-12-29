@@ -8,6 +8,10 @@ import { TablaLigaService } from './services/tabla-liga.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { StoreModule, createFeature } from '@ngrx/store';
+import { ligaReducer } from './state/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { LigaEffect } from './state/effects/liga.effects';
 
 @NgModule({
   declarations: [components, pages],
@@ -18,6 +22,13 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableModule,
     MatTabsModule,
     MatProgressSpinnerModule,
+    StoreModule.forFeature(
+      createFeature({
+        name: 'ligas',
+        reducer: ligaReducer,
+      })
+    ),
+    EffectsModule.forFeature([LigaEffect]),
   ],
   exports: [components, pages],
   providers: [TablaLigaService],
