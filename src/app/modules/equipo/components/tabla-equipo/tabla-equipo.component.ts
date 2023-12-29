@@ -3,7 +3,7 @@ import { FixtureService } from '../../services/fixture.service';
 import { Observable } from 'rxjs';
 import { GameResult } from '../../models/get-fixtures.model';
 import { Router } from '@angular/router';
-import { EstadoService } from 'src/app/modules/shared/services/estado.service';
+import { EstadoService } from '@shared/services/estado.service';
 
 @Component({
   selector: 'app-tabla-equipo',
