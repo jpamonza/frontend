@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { fromEquipo } from '@equipo/state/actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-equipo-page',
@@ -7,10 +9,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./equipo-page.component.scss'],
 })
 export class EquipoPageComponent implements OnInit {
-  public id: number;
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private store: Store) {}
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.store.dispatch(fromEquipo.fixtureEquipoSolicitado({ equipoActual: id }));
   }
 }

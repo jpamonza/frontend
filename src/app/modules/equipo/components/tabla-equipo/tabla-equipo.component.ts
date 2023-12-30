@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { FixtureService } from '../../services/fixture.service';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GameResult } from '../../models/get-fixtures.model';
 import { Router } from '@angular/router';
-import { EstadoService } from '@shared/services/estado.service';
+import { Store } from '@ngrx/store';
+import { selectResultadosEquipoActual } from '@equipo/state/selectors/equipo.selectors';
 
 @Component({
   selector: 'app-tabla-equipo',
@@ -11,12 +11,9 @@ import { EstadoService } from '@shared/services/estado.service';
   styleUrls: ['./tabla-equipo.component.scss'],
 })
 export class TablaEquipoComponent {
-  @Input() public set team(teamId: number) {
-    this.fixtures = this.fixtureService.getFixtures(teamId, this.last);
-  }
-  @Input() public last: number = 10;
-
-  public fixtures: Observable<GameResult[]>;
+  public fixtures: Observable<GameResult[]> = this.store.select(
+    selectResultadosEquipoActual
+  );
   public columnas: string[] = [
     'homeLogo',
     'homeName',
@@ -28,12 +25,9 @@ export class TablaEquipoComponent {
   ];
 
   constructor(
-    private fixtureService: FixtureService,
     private router: Router,
-    private estadoService: EstadoService
-  ) {
-    console.log("Desde Tabla Equipo", this.estadoService.getPaisSeleccionado())
-  }
+    private store: Store
+  ) {}
 
   public irPaginaAnterior(): void {
     this.router.navigate(['..']);

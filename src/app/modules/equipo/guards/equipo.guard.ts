@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { EstadoService } from '../../shared/services/estado.service';
 import { Observable, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectPaisSeleccionado } from '../../liga/state/selectors/liga.selectors';

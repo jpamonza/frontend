@@ -9,6 +9,10 @@ import { EquipoGuard } from './guards/equipo.guard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule, createFeature } from '@ngrx/store';
+import { equipoReducer } from './state/reducers';
+import { effects } from './state/effects';
 
 @NgModule({
   declarations: [EquipoPageComponent, TablaEquipoComponent],
@@ -18,6 +22,13 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    StoreModule.forFeature(
+      createFeature({
+        name: 'equipos',
+        reducer: equipoReducer,
+      })
+    ),
+    EffectsModule.forFeature(effects),
   ],
   providers: [FixtureService, EquipoGuard],
 })

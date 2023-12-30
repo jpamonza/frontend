@@ -7,7 +7,7 @@ import { GameResult, GetFixturesResponse } from '../models/get-fixtures.model';
 export class FixtureService {
   constructor(private http: HttpClient) {}
 
-  public getFixtures(team: number, last: number): Observable<GameResult[]> {
+  public getFixtures(team: number, last: number = 10): Observable<GameResult[]> {
     return this.http
       .get<GetFixturesResponse>(
         `https://v3.football.api-sports.io/fixtures?team=${team}&last=${last}`
